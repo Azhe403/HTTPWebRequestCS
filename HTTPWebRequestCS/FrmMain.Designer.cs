@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.TxtUrl = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.BtnKirim = new System.Windows.Forms.Button();
@@ -44,88 +45,62 @@
             // 
             // TxtUrl
             // 
-            this.TxtUrl.Location = new System.Drawing.Point(9, 43);
+            resources.ApplyResources(this.TxtUrl, "TxtUrl");
             this.TxtUrl.Name = "TxtUrl";
-            this.TxtUrl.Size = new System.Drawing.Size(563, 20);
-            this.TxtUrl.TabIndex = 0;
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 27);
+            resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(18, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "url";
             // 
             // BtnKirim
             // 
-            this.BtnKirim.Location = new System.Drawing.Point(497, 14);
+            resources.ApplyResources(this.BtnKirim, "BtnKirim");
             this.BtnKirim.Name = "BtnKirim";
-            this.BtnKirim.Size = new System.Drawing.Size(75, 23);
-            this.BtnKirim.TabIndex = 2;
-            this.BtnKirim.Text = "kirim";
             this.BtnKirim.UseVisualStyleBackColor = true;
             this.BtnKirim.Click += new System.EventHandler(this.BtnKirim_Click);
             // 
             // TxtResponse
             // 
-            this.TxtResponse.Location = new System.Drawing.Point(6, 19);
-            this.TxtResponse.Multiline = true;
+            resources.ApplyResources(this.TxtResponse, "TxtResponse");
             this.TxtResponse.Name = "TxtResponse";
-            this.TxtResponse.Size = new System.Drawing.Size(566, 211);
-            this.TxtResponse.TabIndex = 3;
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 66);
+            resources.ApplyResources(this.label3, "label3");
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(42, 13);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "method";
             // 
             // CmbMethod
             // 
+            resources.ApplyResources(this.CmbMethod, "CmbMethod");
             this.CmbMethod.DisplayMember = "1";
             this.CmbMethod.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CmbMethod.FormattingEnabled = true;
             this.CmbMethod.Items.AddRange(new object[] {
-            "GET",
-            "POST"});
-            this.CmbMethod.Location = new System.Drawing.Point(9, 82);
+            resources.GetString("CmbMethod.Items"),
+            resources.GetString("CmbMethod.Items1")});
             this.CmbMethod.Name = "CmbMethod";
-            this.CmbMethod.Size = new System.Drawing.Size(121, 21);
-            this.CmbMethod.TabIndex = 6;
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(133, 67);
+            resources.ApplyResources(this.label4, "label4");
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(28, 13);
-            this.label4.TabIndex = 8;
-            this.label4.Text = "data";
             // 
             // TxtData
             // 
-            this.TxtData.Location = new System.Drawing.Point(136, 83);
+            resources.ApplyResources(this.TxtData, "TxtData");
             this.TxtData.Name = "TxtData";
-            this.TxtData.Size = new System.Drawing.Size(436, 20);
-            this.TxtData.TabIndex = 7;
             // 
             // groupBox1
             // 
+            resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Controls.Add(this.TxtResponse);
-            this.groupBox1.Location = new System.Drawing.Point(12, 139);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(578, 258);
-            this.groupBox1.TabIndex = 9;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "respon";
             // 
             // groupBox2
             // 
+            resources.ApplyResources(this.groupBox2, "groupBox2");
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.TxtUrl);
             this.groupBox2.Controls.Add(this.label4);
@@ -133,23 +108,19 @@
             this.groupBox2.Controls.Add(this.TxtData);
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.CmbMethod);
-            this.groupBox2.Location = new System.Drawing.Point(12, 12);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(578, 121);
-            this.groupBox2.TabIndex = 10;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "reques";
             // 
-            // Form1
+            // FrmMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(604, 411);
+            resources.ApplyResources(this, "$this");
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.Name = "Form1";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Contoh HTTP WebRequest";
+            this.DoubleBuffered = true;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.Name = "FrmMain";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);

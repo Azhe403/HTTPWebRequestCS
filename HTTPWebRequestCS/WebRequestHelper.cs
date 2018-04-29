@@ -7,27 +7,19 @@ namespace HTTPWebRequestCS
 {
     internal class WebRequestHelper
     {
-        private WebRequest request;
-        private Stream dataStream;
-
-        private string status;
-
-        public string Status
-        {
-            get { return status; }
-            set { status = value; }
-        }
+        private readonly WebRequest _request;
+        private Stream _dataStream;
 
         public WebRequestHelper(string url)
         {
-            request = WebRequest.Create(url);
+            _request = WebRequest.Create(url);
         }
 
         public WebRequestHelper(string url, string method) : this(url)
         {
             if (method.Equals("GET") || method.Equals("POST"))
             {
-                request.Method = method;
+                _request.Method = method;
             }
             else
             {
@@ -39,23 +31,25 @@ namespace HTTPWebRequestCS
         {
             string postData = data;
             byte[] byteArray = Encoding.UTF8.GetBytes(postData);
-            request.ContentType = "application/x-www-form-urlencoded";
-            request.ContentLength = byteArray.Length;
-            dataStream = request.GetRequestStream();
-            dataStream.Write(byteArray, 0, byteArray.Length);
-            dataStream.Close();
+            _request.ContentType = "application/x-www-form-urlencoded";
+            _request.ContentLength = byteArray.Length;
+            _dataStream = _request.GetRequestStream();
+            _dataStream.Write(byteArray, 0, byteArray.Length);
+            _dataStream.Close();
         }
+
+        public string Status { get; set; }
 
         public string GetResponse()
         {
-            WebResponse response = request.GetResponse();
-            this.Status = ((HttpWebResponse)response).StatusDescription;
-            dataStream = response.GetResponseStream();
-            StreamReader reader = new StreamReader(dataStream);
+            WebResponse response = _request.GetResponse();
+            Status = ((HttpWebResponse)response).StatusDescription;
+            _dataStream = response.GetResponseStream();
+            StreamReader reader = new StreamReader(_dataStream ?? throw new InvalidOperationException());
             string responseFromServer = reader.ReadToEnd();
 
             reader.Close();
-            dataStream.Close();
+            _dataStream.Close();
             response.Close();
 
             return responseFromServer;
